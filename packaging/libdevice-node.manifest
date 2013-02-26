@@ -1,0 +1,21 @@
+<manifest>
+	<define>
+		<domain name="device"/>
+		<provide>
+			<label name="device::camera"/>
+			<label name="device::app_logging"/>
+			<label name="device::sys_logging"/>
+			<label name="device::audio"/>
+			<label name="device::recording"/>
+			<label name="device::hwcodec"/>
+			<label name="device::video"/>
+			<label name="device::radio"/>
+			<label name="device::bklight"/>
+			<label name="device::led"/>
+			<label name="device::mdnie"/>
+		</provide>
+	</define>
+	<request>
+		<domain name="_"/>
+	</request>
+</manifest>

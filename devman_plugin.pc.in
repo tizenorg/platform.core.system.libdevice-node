@@ -1,0 +1,12 @@
+# Package Information for pkg-config
+
+prefix=@PREFIX@
+exec_prefix=@EXEC_PREFIX@
+libdir=@LIBDIR@
+includedir=@INCLUDEDIR@
+
+Name: devman_plugin
+Description: SAMSUNG Linux platform devman plugin library
+Version: @VERSION@
+Requires:
+Cflags: -I${includedir}

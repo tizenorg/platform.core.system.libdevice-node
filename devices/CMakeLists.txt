@@ -1,0 +1,10 @@
+SET(TARGET_SRCS
+	devices/cpu.c
+	devices/display.c
+	devices/extcon.c
+	devices/led.c
+	devices/memory.c
+	devices/power.c
+	devices/process.c
+	devices/vibrator.c
+)
