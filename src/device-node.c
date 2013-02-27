@@ -87,7 +87,7 @@ API int device_get_property(enum device_type devtype, int property, int *value)
 		errno = ENODEV;
 		return -1;
 	} else if (r == -1) {
-		DEVERR("get_prop of %s return failes", dev->name);
+		DEVERR("get_prop of %s(%d) return failes", dev->name, property);
 		errno = EPERM;
 		return -1;
 	}
@@ -128,7 +128,7 @@ API int device_set_property(enum device_type devtype, int property, int value)
 		errno = ENODEV;
 		return -1;
 	} else if (r == -1) {
-		DEVERR("set_prop of %s return failes", dev->name);
+		DEVERR("set_prop of %s(%d) return failes", dev->name, property);
 		errno = EPERM;
 		return -1;
 	}

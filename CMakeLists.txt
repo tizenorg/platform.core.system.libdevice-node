@@ -40,8 +40,8 @@ CONFIGURE_FILE(${PROJECT_NAME}.pc.in ${PROJECT_NAME}.pc @ONLY)
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.pc DESTINATION lib/pkgconfig)
 
 # will be deprecated
-#CONFIGURE_FILE(devman_plugin.pc.in devman_plugin.pc @ONLY)
-#INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/devman_plugin.pc DESTINATION lib/pkgconfig)
+CONFIGURE_FILE(devman_plugin.pc.in devman_plugin.pc @ONLY)
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/devman_plugin.pc DESTINATION lib/pkgconfig)
 
 FOREACH(hfile ${HEADERS})
 	INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${hfile} DESTINATION include/${PROJECT_NAME})
