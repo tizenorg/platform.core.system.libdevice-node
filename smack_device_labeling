@@ -35,3 +35,6 @@ chsmack -a 'device::mdnie' /sys/class/extension/mdnie/scenario
 chsmack -a 'device::mdnie' /sys/class/extension/mdnie/tone
 chsmack -a 'device::mdnie' /sys/class/extension/mdnie/outdoor
 chsmack -a 'device::mdnie' /sys/class/extension/mdnie/tune
+chsmack -a 'device::haptic' /sys/class/haptic/motor/level
+chsmack -a 'device::haptic' /sys/class/haptic/motor/enable
+chsmack -a 'device::haptic' /sys/class/haptic/motor/oneshot
