@@ -28,6 +28,7 @@ static int display_get_prop(int __prop, int *val)
 {
 	int prop = PROPERTY_PROP(__prop);
 	int index = PROPERTY_INDEX(__prop);
+	int lux = index;
 	int ps_stat;
 	int ps_disp_stat;
 	int disp_cnt;
@@ -39,9 +40,11 @@ static int display_get_prop(int __prop, int *val)
 		return -1;
 	}
 
-	if (index >= disp_cnt) {
-		DEVERR("Invalid Argument: index(%d) > max(%d)", index, disp_cnt);
-		return -1;
+	if (prop != PROP_DISPLAY_BRIGHTNESS_BY_LUX) {
+		if (index >= disp_cnt) {
+			DEVERR("Invalid Argument: index(%d) > max(%d)", index, disp_cnt);
+			return -1;
+		}
 	}
 
 	switch (prop) {
@@ -61,7 +64,7 @@ static int display_get_prop(int __prop, int *val)
 	case PROP_DISPLAY_ONOFF:
 		return PLUGIN_GET(lcd_power)(index, val);
 	case PROP_DISPLAY_BRIGHTNESS_BY_LUX:
-		return PLUGIN_GET(backlight_brightness_by_lux)(val);
+		return PLUGIN_GET(backlight_brightness_by_lux)(lux, val);
 	case PROP_DISPLAY_IMAGE_ENHANCE_MODE:
 		return PLUGIN_GET(image_enhance_mode)(val);
 	case PROP_DISPLAY_IMAGE_ENHANCE_SCENARIO:

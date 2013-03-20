@@ -1,32 +1,6 @@
 #!/bin/sh
 
 # Set device node permissions for security
-chsmack -a 'device::camera' /dev/video1
-chsmack -a 'device::camera' /dev/s3c-jpg
-chsmack -a 'device::app_logging' /dev/log_main
-chsmack -a 'device::app_logging' /dev/log_events
-chsmack -a 'device::app_logging' /dev/log_radio
-chsmack -a 'device::sys_logging' /dev/log_system
-chsmack -a 'device::audio' /dev/snd/
-chsmack -a 'device::audio' /dev/snd/controlC0
-chsmack -a 'device::audio' /dev/snd/pcmC0D0p
-chsmack -a 'device::audio' /dev/snd/pcmC0D1p
-chsmack -a 'device::audio' /dev/snd/pcmC0D2p
-chsmack -a 'device::audio' /dev/snd/pcmC0D3p
-chsmack -a 'device::audio' /dev/snd/timer
-chsmack -a 'device::recording' /dev/snd/pcmC0D0c
-chsmack -a 'device::recording' /dev/snd/pcmC0D1c
-chsmack -a 'device::recording' /dev/snd/pcmC0D2c
-chsmack -a 'device::recording' /dev/snd/pcmC0D3c
-chsmack -a 'device::hwcodec' /dev/s3c-mfc
-chsmack -a 'device::hwcodec' /dev/video5
-chsmack -a 'device::hwcodec' /dev/video6
-chsmack -a 'device::video' /dev/fb0
-chsmack -a 'device::video' /dev/video0
-chsmack -a 'device::video' /dev/video2
-chsmack -a 'device::video' /dev/video3
-chsmack -a 'device::video' /dev/s3c-mem
-chsmack -a 'device::radio' /dev/radio0
 chsmack -a 'device::bklight' /sys/class/backlight/*/brightness
 chsmack -a 'device::led' /sys/class/camera/flash/rear_flash
 chsmack -a 'device::led' /sys/class/camera/flash/max_brightness
