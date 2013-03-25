@@ -6,6 +6,7 @@ Group:      System/Libraries
 License:    Apache License, Version 2.0
 Source0:    %{name}-%{version}.tar.gz
 Source1:    %{name}.manifest
+Source2:    smack-device-labeling.service
 BuildRequires:  cmake
 BuildRequires:  pkgconfig(vconf)
 BuildRequires:  pkgconfig(dlog)
@@ -40,6 +41,10 @@ install -D -d %{buildroot}/etc/rc.d/rc4.d/
 ln -sf ../init.d/smack_device_labeling %{buildroot}/etc/rc.d/rc3.d/S44smack_device_labeling
 ln -sf ../init.d/smack_device_labeling %{buildroot}/etc/rc.d/rc4.d/S44smack_device_labeling
 
+mkdir -p %{buildroot}%{_libdir}/systemd/system/basic.target.wants
+install -m 644 %{SOURCE2} %{buildroot}%{_libdir}/systemd/system/
+ln -s ../smack-device-labeling.service %{buildroot}%{_libdir}/systemd/system/basic.target.wants/
+
 %post
 if [ ! -e "/lib/firmware/mdnie" ]
 then
@@ -53,6 +58,8 @@ fi
 %{_libdir}/udev/rules.d/*
 %{_datadir}/license/device-node
 %attr(755,root,root) %{_sysconfdir}/rc.d/*
+%{_libdir}/systemd/system/smack-device-labeling.service
+%{_libdir}/systemd/system/basic.target.wants/smack-device-labeling.service
 %manifest %{_datadir}/%{name}.manifest
 
 %files devel
