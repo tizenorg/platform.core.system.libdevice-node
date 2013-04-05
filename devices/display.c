@@ -30,7 +30,7 @@ static int display_get_prop(int __prop, int *val)
 	int index = PROPERTY_INDEX(__prop);
 	int lux = index;
 	int ps_stat;
-	int ps_disp_stat;
+	int ps_disp_stat = 0;
 	int disp_cnt;
 	int r;
 
@@ -85,7 +85,7 @@ static int display_set_prop(int __prop, int val)
 	int prop = PROPERTY_PROP(__prop);
 	int index = PROPERTY_INDEX(__prop);
 	int ps_stat;
-	int ps_disp_stat;
+	int ps_disp_stat = 0;
 	int disp_cnt;
 	int r;
 
