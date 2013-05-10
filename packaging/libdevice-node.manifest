@@ -13,6 +13,10 @@
 			<label name="device::bklight"/>
 			<label name="device::led"/>
 			<label name="device::mdnie"/>
+			<label name="device::dialout"/>
+			<label name="device::printer"/>
+			<label name="device::nfc"/>
+			<label name="device::hall"/>
 		</provide>
 	</define>
 	<request>
