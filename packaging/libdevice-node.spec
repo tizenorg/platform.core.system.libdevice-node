@@ -33,9 +33,9 @@ make %{?jobs:-j%jobs}
 %install
 %make_install
 
-mkdir -p %{buildroot}%{_libdir}/systemd/system/basic.target.wants
-install -m 644 %{SOURCE2} %{buildroot}%{_libdir}/systemd/system/
-ln -s ../smack-device-labeling.service %{buildroot}%{_libdir}/systemd/system/basic.target.wants/
+mkdir -p %{buildroot}%{_unitdir}/basic.target.wants
+install -m 644 %{SOURCE2} %{buildroot}%{_unitdir}/
+ln -s ../smack-device-labeling.service %{buildroot}%{_unitdir}/basic.target.wants/
 mkdir -p %{buildroot}/lib/firmware/mdnie
 
 
@@ -45,8 +45,8 @@ mkdir -p %{buildroot}/lib/firmware/mdnie
 %files
 %{_libdir}/*.so.*
 %{_prefix}/lib/udev/rules.d/*
-%{_libdir}/systemd/system/smack-device-labeling.service
-%{_libdir}/systemd/system/basic.target.wants/smack-device-labeling.service
+%{_unitdir}/smack-device-labeling.service
+%{_unitdir}/basic.target.wants/smack-device-labeling.service
 /lib/firmware/mdnie
 %manifest %{name}.manifest
 
