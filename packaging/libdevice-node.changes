@@ -1,3 +1,6 @@
+* Wed Jun 19 2013 Baptiste DURAND <baptiste.durand@eurogiciel.fr> accepted/tizen/20130520.103455@ad3a092
+- Fix installation of systemd service
+
 * Sat May 18 2013 Anas Nashif <anas.nashif@intel.com> submit/tizen/20130517.045152@03de040
 - Make it build on 64bit and general cleanup for 3.0
 
