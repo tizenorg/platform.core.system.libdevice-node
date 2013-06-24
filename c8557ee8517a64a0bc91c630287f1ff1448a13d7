@@ -1,0 +1,10 @@
+Verified+1: Patrick McCarty <patrick.mccarty@linux.intel.com>
+Code-Review+2: Rusty Lynch <rusty.lynch@intel.com>
+Verified+1: Rusty Lynch <rusty.lynch@intel.com>
+Code-Review+1: Michael Demeter
+Verified+1: Michael Demeter
+Submitted-by: Rusty Lynch <rusty.lynch@intel.com>
+Submitted-at: Mon, 24 Jun 2013 16:14:47 -0700
+Reviewed-on: https://review.tizen.org/gerrit/4232
+Project: platform/core/system/libdevice-node
+Branch: refs/heads/tizen
