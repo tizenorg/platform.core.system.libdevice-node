@@ -168,6 +168,9 @@ typedef struct {
 
 	int	(*OEM_sys_get_hdmi_support) (int *value);
 
+
+	int	(*OEM_sys_get_hardkey_backlight) (int *value);
+	int	(*OEM_sys_set_hardkey_backlight) (int value);
 } OEM_sys_devman_plugin_interface;
 
 const OEM_sys_devman_plugin_interface *OEM_sys_get_devman_plugin_interface();

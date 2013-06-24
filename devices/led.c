@@ -26,6 +26,8 @@ static int led_get_prop(int prop, int *val)
 		return PLUGIN_GET(leds_torch_max_brightness)(val);
 	case PROP_LED_BRIGHTNESS:
 		return PLUGIN_GET(leds_torch_brightness)(val);
+	case PROP_LED_HARDKEY:
+		return PLUGIN_GET(hardkey_backlight)(val);
 	}
 
 	return -1;
@@ -36,6 +38,8 @@ static int led_set_prop(int prop, int val)
 	switch (prop) {
 	case PROP_LED_BRIGHTNESS:
 		return PLUGIN_SET(leds_torch_brightness)(val);
+	case PROP_LED_HARDKEY:
+		return PLUGIN_SET(hardkey_backlight)(val);
 	}
 
 	return -1;
