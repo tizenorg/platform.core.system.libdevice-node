@@ -43,6 +43,7 @@ mkdir -p %{buildroot}/lib/firmware/mdnie
 %postun -p /sbin/ldconfig
 
 %files
+%manifest %{name}.manifest
 %{_libdir}/*.so.*
 %{_prefix}/lib/udev/rules.d/*
 %{_unitdir}/smack-device-labeling.service
@@ -51,6 +52,7 @@ mkdir -p %{buildroot}/lib/firmware/mdnie
 %manifest %{name}.manifest
 
 %files devel
+%manifest %{name}.manifest
 %{_includedir}/device-node/*.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
