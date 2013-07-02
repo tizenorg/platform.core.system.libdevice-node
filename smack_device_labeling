@@ -1,14 +1,14 @@
 #!/bin/sh
 
 # Set device node permissions for security
-chsmack -a 'device::bklight' /sys/class/backlight/*/brightness
-chsmack -a 'device::led' /sys/class/camera/flash/rear_flash
-chsmack -a 'device::led' /sys/class/camera/flash/max_brightness
-chsmack -a 'device::mdnie' /sys/class/extension/mdnie/mode
-chsmack -a 'device::mdnie' /sys/class/extension/mdnie/scenario
-chsmack -a 'device::mdnie' /sys/class/extension/mdnie/tone
-chsmack -a 'device::mdnie' /sys/class/extension/mdnie/outdoor
-chsmack -a 'device::mdnie' /sys/class/extension/mdnie/tune
-chsmack -a 'device::haptic' /sys/class/haptic/motor/level
-chsmack -a 'device::haptic' /sys/class/haptic/motor/enable
-chsmack -a 'device::haptic' /sys/class/haptic/motor/oneshot
+#chsmack -a 'device::bklight' /sys/class/backlight/*/brightness
+#chsmack -a 'device::led' /sys/class/camera/flash/rear_flash
+#chsmack -a 'device::led' /sys/class/camera/flash/max_brightness
+#chsmack -a 'device::mdnie' /sys/class/extension/mdnie/mode
+#chsmack -a 'device::mdnie' /sys/class/extension/mdnie/scenario
+#chsmack -a 'device::mdnie' /sys/class/extension/mdnie/tone
+#chsmack -a 'device::mdnie' /sys/class/extension/mdnie/outdoor
+#chsmack -a 'device::mdnie' /sys/class/extension/mdnie/tune
+#chsmack -a 'device::haptic' /sys/class/haptic/motor/level
+#chsmack -a 'device::haptic' /sys/class/haptic/motor/enable
+#chsmack -a 'device::haptic' /sys/class/haptic/motor/oneshot
