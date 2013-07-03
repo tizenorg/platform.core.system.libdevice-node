@@ -1,0 +1,9 @@
+Code-Review+2: Auke Kok <auke-jan.h.kok@intel.com>
+Code-Review+1: Michael Demeter <michael.demeter@intel.com>
+Code-Review+1: Baptiste DURAND <baptiste.durand@eurogiciel.fr>
+Verified+1: Baptiste DURAND <baptiste.durand@eurogiciel.fr>
+Submitted-by: Anas Nashif <anas.nashif@intel.com>
+Submitted-at: Wed, 03 Jul 2013 10:51:26 -0700
+Reviewed-on: https://review.tizen.org/gerrit/4364
+Project: platform/core/system/libdevice-node
+Branch: refs/heads/tizen
