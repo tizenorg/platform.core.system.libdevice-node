@@ -1,3 +1,6 @@
+* Wed Jul 10 2013 William Douglas <william.douglas@intel.com> submit/tizen/20130624.230646@506902a
+- Clean up udev and Smack rules
+
 * Mon Jun 24 2013 Patrick McCarty <patrick.mccarty@linux.intel.com> cd322e4
 - TIVI-1050: set several Smack rules to floor in 95-devices.rules
 
