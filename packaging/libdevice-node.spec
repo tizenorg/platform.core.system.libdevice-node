@@ -25,17 +25,21 @@ Library to control OAL APIs (devel)
 %setup -q
 cp %{SOURCE1} .
 %build
-%cmake . 
+%cmake .
 make %{?jobs:-j%jobs}
 
 %install
 %make_install
+
+mkdir -p %{buildroot}%{_datadir}/license
+cp LICENSE.APLv2 %{buildroot}%{_datadir}/license/%{name}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
 %{_libdir}/*.so.*
+%{_datadir}/license/%{name}
 %manifest %{name}.manifest
 
 %files devel
