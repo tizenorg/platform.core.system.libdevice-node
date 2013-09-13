@@ -25,7 +25,7 @@ Library to control OAL APIs (devel)
 %setup -q
 cp %{SOURCE1} .
 %build
-%cmake . 
+%cmake .
 make %{?jobs:-j%jobs}
 
 %install
@@ -36,7 +36,9 @@ make %{?jobs:-j%jobs}
 
 %files
 %{_libdir}/*.so.*
+%{_datadir}/license/%{name}
 %manifest %{name}.manifest
+%license LICENSE.APLv2
 
 %files devel
 %{_includedir}/device-node/*.h
