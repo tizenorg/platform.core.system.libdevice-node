@@ -373,6 +373,15 @@ static int OEM_sys_get_hdmi_support(int *value)
 	return 0;
 }
 
+static int OEM_sys_get_hardkey_backlight(int *value){
+	return 0;
+}
+
+static int OEM_sys_set_hardkey_backlight(int value){
+	return 0;
+}
+
+
 const OEM_sys_devman_plugin_interface default_plugin = {
 	/* Light interfaces */
 	.OEM_sys_get_display_count = &OEM_sys_get_display_count,
@@ -476,4 +485,7 @@ const OEM_sys_devman_plugin_interface default_plugin = {
 
 	.OEM_sys_get_whitemagic_mode = &OEM_sys_get_whitemagic_mode,
 	.OEM_sys_set_whitemagic_mode = &OEM_sys_set_whitemagic_mode,
+
+	.OEM_sys_get_hardkey_backlight = &OEM_sys_get_hardkey_backlight,
+	.OEM_sys_set_hardkey_backlight= &OEM_sys_set_hardkey_backlight
 };
