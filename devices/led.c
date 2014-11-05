@@ -21,6 +21,12 @@
 
 static int led_get_prop(int prop, int *val)
 {
+	if (!plugin_intf)
+	{
+		DEVERR("plugin_intf is NULL");
+		return -1;
+	}
+
 	switch (prop) {
 	case PROP_LED_MAX_BRIGHTNESS:
 		return PLUGIN_GET(leds_torch_max_brightness)(val);
@@ -35,6 +41,12 @@ static int led_get_prop(int prop, int *val)
 
 static int led_set_prop(int prop, int val)
 {
+	if (!plugin_intf)
+	{
+		DEVERR("plugin_intf is NULL");
+		return -1;
+	}
+
 	switch (prop) {
 	case PROP_LED_BRIGHTNESS:
 		return PLUGIN_SET(leds_torch_brightness)(val);
