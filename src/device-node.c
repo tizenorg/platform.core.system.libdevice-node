@@ -63,31 +63,31 @@ API int device_get_property(enum device_type devtype, int property, int *value)
 
 	type = find_device(devtype);
 	if (type == NULL) {
-		DEVERR("devtype cannot find");
+		_E("devtype cannot find");
 		errno = EPERM;
 		return -1;
 	}
 
 	dev = container_of(type, struct device, type);
 	if (dev == NULL) {
-		DEVERR("device cannot find");
+		_E("device cannot find");
 		errno = EPERM;
 		return -1;
 	}
 
 	if (dev->get_prop == NULL) {
-		DEVERR("devtype doesn't have getter function");
+		_E("devtype doesn't have getter function");
 		errno = EPERM;
 		return -1;
 	}
 
 	r = dev->get_prop(property, value);
 	if (r == -ENODEV) {
-		DEVERR("Not support driver");
+		_E("Not support driver");
 		errno = ENODEV;
 		return -1;
 	} else if (r == -1) {
-		DEVERR("get_prop of %s(%d) return failes", dev->name, property);
+		_E("get_prop of %s(%d) return failes", dev->name, property);
 		errno = EPERM;
 		return -1;
 	}
@@ -104,31 +104,31 @@ API int device_set_property(enum device_type devtype, int property, int value)
 
 	type = find_device(devtype);
 	if (type == NULL) {
-		DEVERR("devtype cannot find");
+		_E("devtype cannot find");
 		errno = EPERM;
 		return -1;
 	}
 
 	dev = container_of(type, struct device, type);
 	if (dev == NULL) {
-		DEVERR("device cannot find");
+		_E("device cannot find");
 		errno = EPERM;
 		return -1;
 	}
 
 	if (dev->set_prop == NULL) {
-		DEVERR("devtype doesn't have setter function");
+		_E("devtype doesn't have setter function");
 		errno = EPERM;
 		return -1;
 	}
 
 	r = dev->set_prop(property, value);
 	if (r == -ENODEV) {
-		DEVERR("Not support driver");
+		_E("Not support driver");
 		errno = ENODEV;
 		return -1;
 	} else if (r == -1) {
-		DEVERR("set_prop of %s(%d) return failes", dev->name, property);
+		_E("set_prop of %s(%d) return failes", dev->name, property);
 		errno = EPERM;
 		return -1;
 	}
@@ -144,19 +144,19 @@ static void __CONSTRUCTOR__ module_init(void)
 
 	dlopen_handle = dlopen(DEVMAN_PLUGIN_PATH, RTLD_NOW);
 	if (!dlopen_handle) {
-		DEVERR("dlopen() failed");
+		_E("dlopen() failed");
 		goto ERROR;
 	}
 
 	OEM_sys_get_devman_plugin_interface = dlsym(dlopen_handle, "OEM_sys_get_devman_plugin_interface");
 	if ((error = dlerror()) != NULL) {
-		DEVERR("dlsym() failed: %s", error);
+		_E("dlsym() failed: %s", error);
 		goto ERROR;
 	}
 
 	plugin_intf = OEM_sys_get_devman_plugin_interface();
 	if (!plugin_intf) {
-		DEVERR("get_devman_plugin_interface() failed");
+		_E("get_devman_plugin_interface() failed");
 		goto ERROR;
 	}
 
