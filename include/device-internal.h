@@ -33,11 +33,13 @@
 #ifdef FEATURE_DEVICE_NODE_DLOG
 #define LOG_TAG "DEVICE_NODE"
 #include <dlog.h>
-#define DEVLOG(fmt, args...)        SLOGD(fmt, ##args)
-#define DEVERR(fmt, args...)        SLOGE(fmt, ##args)
+#define _I(fmt, args...)        SLOGI(fmt, ##args)
+#define _D(fmt, args...)        SLOGD(fmt, ##args)
+#define _E(fmt, args...)        SLOGE(fmt, ##args)
 #else
-#define DEVLOG(x, ...)              do { } while (0)
-#define DEVERR(x, ...)              do { } while (0)
+#define _I(x, ...)              do { } while (0)
+#define _D(x, ...)              do { } while (0)
+#define _E(x, ...)              do { } while (0)
 #endif
 
 #define DEVMAN_PLUGIN_PATH  "/usr/lib/libslp_devman_plugin.so"

@@ -36,13 +36,13 @@ static int display_get_prop(int __prop, int *val)
 
 	r = PLUGIN_GET(display_count)(&disp_cnt);
 	if (r < 0) {
-		DEVERR("Get display count failed");
+		_E("Get display count failed");
 		return -1;
 	}
 
 	if (prop != PROP_DISPLAY_BRIGHTNESS_BY_LUX) {
 		if (index >= disp_cnt) {
-			DEVERR("Invalid Argument: index(%d) > max(%d)", index, disp_cnt);
+			_E("Invalid Argument: index(%d) > max(%d)", index, disp_cnt);
 			return -1;
 		}
 	}
@@ -91,12 +91,12 @@ static int display_set_prop(int __prop, int val)
 
 	r = PLUGIN_GET(display_count)(&disp_cnt);
 	if (r < 0) {
-		DEVERR("Get display count failed");
+		_E("Get display count failed");
 		return -1;
 	}
 
 	if (index >= disp_cnt) {
-		DEVERR("Invalid Argument: index(%d) > max(%d)", index, disp_cnt);
+		_E("Invalid Argument: index(%d) > max(%d)", index, disp_cnt);
 		return -1;
 	}
 
