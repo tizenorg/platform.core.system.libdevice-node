@@ -18,17 +18,18 @@ FOREACH(flag ${rpkgs_CFLAGS})
 ENDFOREACH(flag)
 
 SET(SRCS
-	src/device-node.c
-	src/device-plugin.c)
+	src/device-node.c)
 
 SET(HEADERS
 	include/device-node.h
+	include/device-oal.h
 	include/devman_plugin_intf.h)
 
 INCLUDE(devices/CMakeLists.txt)
 
 SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} -fvisibility=hidden")
 SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} -g")
+SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} -Werror")
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${EXTRA_CFLAGS}")
 
 ADD_LIBRARY(${PROJECT_NAME} SHARED ${SRCS} ${TARGET_SRCS})
@@ -46,3 +47,5 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/devman_plugin.pc DESTINATION ${LIB_INS
 FOREACH(hfile ${HEADERS})
 	INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${hfile} DESTINATION include/${PROJECT_NAME})
 ENDFOREACH(hfile)
+
+ADD_SUBDIRECTORY(plugins)
