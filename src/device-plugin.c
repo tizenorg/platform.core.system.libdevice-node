@@ -353,7 +353,7 @@ static int OEM_sys_set_cpufreq_scaling_min_freq(int value)
 	return 0;
 }
 
-static int OEM_sys_get_backlight_brightness_by_lux(int lux)
+static int OEM_sys_get_backlight_brightness_by_lux(int lux, int *value)
 {
 	return 0;
 }
