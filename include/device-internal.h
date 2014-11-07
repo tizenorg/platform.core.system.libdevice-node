@@ -58,8 +58,8 @@ struct device {
 	int (*get_prop) (int property, int *val);
 };
 
-void add_device(enum device_type *devtype);
-void remove_device(enum device_type *devtype);
+void add_device(const enum device_type *devtype);
+void remove_device(const enum device_type *devtype);
 
 extern const OEM_sys_devman_plugin_interface *plugin_intf;
 extern const OEM_sys_devman_plugin_interface default_plugin;
