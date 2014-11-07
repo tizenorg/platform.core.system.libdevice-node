@@ -22,7 +22,6 @@
 #include <errno.h>
 #include "device-internal.h"
 
-#define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
 #define container_of(ptr, type, member) ({            \
 		 const typeof( ((type *)0)->member ) *__mptr = (ptr);    \
 		 (type *)( (char *)__mptr - offsetof(type,member) );})
@@ -31,28 +30,28 @@ static GList *dev_head;
 static void *dlopen_handle;
 const OEM_sys_devman_plugin_interface *plugin_intf;
 
-void add_device(enum device_type *devtype)
+void add_device(const enum device_type *devtype)
 {
-	dev_head = g_list_append(dev_head, devtype);
+	dev_head = g_list_append(dev_head, (enum device_type *)devtype);
 }
 
-void remove_device(enum device_type *devtype)
+void remove_device(const enum device_type *devtype)
 {
-	dev_head = g_list_remove(dev_head, devtype);
+	dev_head = g_list_remove(dev_head, (enum device_type *)devtype);
 }
 
 static enum device_type *find_device(enum device_type devtype)
 {
 	GList *elem;
-	enum device_type *type = NULL;
+	enum device_type *type;
 
 	for (elem = dev_head; elem; elem = elem->next) {
 		type = elem->data;
 		if (*type == devtype)
-			break;
+			return type;
 	}
 
-	return type;
+	return NULL;
 }
 
 API int device_get_property(enum device_type devtype, int property, int *value)
