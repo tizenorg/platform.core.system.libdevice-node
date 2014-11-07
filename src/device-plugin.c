@@ -373,6 +373,11 @@ static int OEM_sys_get_hdmi_support(int *value)
 	return 0;
 }
 
+static int OEM_sys_set_irled_control(char *value)
+{
+	return 0;
+}
+
 static int OEM_sys_get_hardkey_backlight(int *value){
 	return 0;
 }
@@ -448,8 +453,6 @@ const OEM_sys_devman_plugin_interface default_plugin = {
 	.OEM_sys_get_jack_tvout_online = &OEM_sys_get_jack_tvout_online,
 	.OEM_sys_get_jack_keyboard_online = &OEM_sys_get_jack_keyboard_online,
 
-	.OEM_sys_get_hdmi_support = &OEM_sys_get_hdmi_support,
-
 	/* Torch interfaces */
 	.OEM_sys_get_leds_torch_max_brightness = &OEM_sys_get_leds_torch_max_brightness,
 	.OEM_sys_get_leds_torch_brightness = &OEM_sys_get_leds_torch_brightness,
@@ -485,6 +488,10 @@ const OEM_sys_devman_plugin_interface default_plugin = {
 
 	.OEM_sys_get_whitemagic_mode = &OEM_sys_get_whitemagic_mode,
 	.OEM_sys_set_whitemagic_mode = &OEM_sys_set_whitemagic_mode,
+
+	.OEM_sys_get_hdmi_support = &OEM_sys_get_hdmi_support,
+
+	.OEM_sys_set_irled_control = &OEM_sys_set_irled_control,
 
 	.OEM_sys_get_hardkey_backlight = &OEM_sys_get_hardkey_backlight,
 	.OEM_sys_set_hardkey_backlight= &OEM_sys_set_hardkey_backlight

@@ -51,6 +51,8 @@ static int display_get_prop(int __prop, int *val)
 	case PROP_DISPLAY_DISPLAY_COUNT:
 		*val = disp_cnt;
 		return 0;
+	case PROP_DISPLAY_MAX_BRIGHTNESS:
+		return PLUGIN_GET(backlight_max_brightness)(index, val);
 	case PROP_DISPLAY_BRIGHTNESS:
 		/* check power saving */
 		vconf_get_bool(VCONFKEY_SETAPPL_PWRSV_SYSMODE_STATUS, &ps_stat);

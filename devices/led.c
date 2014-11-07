@@ -38,6 +38,8 @@ static int led_set_prop(int prop, int val)
 	switch (prop) {
 	case PROP_LED_BRIGHTNESS:
 		return PLUGIN_SET(leds_torch_brightness)(val);
+	case PROP_LED_IR_COMMAND:
+		return PLUGIN_SET(irled_control)((char*)val);
 	case PROP_LED_HARDKEY:
 		return PLUGIN_SET(hardkey_backlight)(val);
 	}

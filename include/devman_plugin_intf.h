@@ -168,6 +168,7 @@ typedef struct {
 
 	int	(*OEM_sys_get_hdmi_support) (int *value);
 
+	int	(*OEM_sys_set_irled_control) (char *value);
 
 	int	(*OEM_sys_get_hardkey_backlight) (int *value);
 	int	(*OEM_sys_set_hardkey_backlight) (int value);
