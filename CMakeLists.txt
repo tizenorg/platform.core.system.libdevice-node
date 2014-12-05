@@ -11,7 +11,7 @@ SET(INC_DIR include)
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/${INC_DIR})
 
 INCLUDE(FindPkgConfig)
-pkg_check_modules(rpkgs REQUIRED dlog vconf)
+pkg_check_modules(rpkgs REQUIRED dlog vconf glib-2.0)
 
 FOREACH(flag ${rpkgs_CFLAGS})
 	SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} ${flag}")

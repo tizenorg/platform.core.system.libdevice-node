@@ -7,6 +7,7 @@ License:    Apache-2.0
 Source0:    %{name}-%{version}.tar.gz
 Source1:    %{name}.manifest
 BuildRequires:  cmake
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(vconf)
 BuildRequires:  pkgconfig(dlog)
 
@@ -24,6 +25,7 @@ Library to control OAL APIs (devel)
 %prep
 %setup -q
 cp %{SOURCE1} .
+
 %build
 %cmake .
 make %{?jobs:-j%jobs}

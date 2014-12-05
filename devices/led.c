@@ -17,6 +17,7 @@
 
 
 #include <stdio.h>
+#include <stdint.h>
 #include "device-internal.h"
 
 static int led_get_prop(int prop, int *val)
@@ -39,7 +40,7 @@ static int led_set_prop(int prop, int val)
 	case PROP_LED_BRIGHTNESS:
 		return PLUGIN_SET(leds_torch_brightness)(val);
 	case PROP_LED_IR_COMMAND:
-		return PLUGIN_SET(irled_control)((char*)val);
+		return PLUGIN_SET(irled_control)((char*)(intptr_t)val);
 	case PROP_LED_HARDKEY:
 		return PLUGIN_SET(hardkey_backlight)(val);
 	}
