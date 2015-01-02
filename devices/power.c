@@ -23,21 +23,21 @@ static int power_get_prop(int prop, int *val)
 {
 	switch (prop) {
 	case PROP_POWER_CAPACITY:
-		return PLUGIN_GET(battery_capacity)(val);
+		return PLUGIN_GET(battery_capacity, val);
 	case PROP_POWER_CAPACITY_RAW:
-		return PLUGIN_GET(battery_capacity_raw)(val);
+		return PLUGIN_GET(battery_capacity_raw, val);
 	case PROP_POWER_CHARGE_FULL:
-		return PLUGIN_GET(battery_charge_full)(val);
+		return PLUGIN_GET(battery_charge_full, val);
 	case PROP_POWER_CHARGE_NOW:
-		return PLUGIN_GET(battery_charge_now)(val);
+		return PLUGIN_GET(battery_charge_now, val);
 	case PROP_POWER_WAKEUP_COUNT:
-		return PLUGIN_GET(power_wakeup_count)(val);
+		return PLUGIN_GET(power_wakeup_count, val);
 	case PROP_POWER_PRESENT:
-		return PLUGIN_GET(battery_present)(val);
+		return PLUGIN_GET(battery_present, val);
 	case PROP_POWER_HEALTH:
-		return PLUGIN_GET(battery_health)(val);
+		return PLUGIN_GET(battery_health, val);
 	case PROP_POWER_INSUSPEND_CHARGING_SUPPORT:
-		return PLUGIN_GET(battery_support_insuspend_charging)(val);
+		return PLUGIN_GET(battery_support_insuspend_charging, val);
 	}
 
 	return -1;
@@ -47,9 +47,9 @@ static int power_set_prop(int prop, int val)
 {
 	switch (prop) {
 	case PROP_POWER_STATE:
-		return PLUGIN_SET(power_state)(val);
+		return PLUGIN_SET(power_state, val);
 	case PROP_POWER_WAKEUP_COUNT:
-		return PLUGIN_SET(power_wakeup_count)(val);
+		return PLUGIN_SET(power_wakeup_count, val);
 	}
 
 	return -1;
