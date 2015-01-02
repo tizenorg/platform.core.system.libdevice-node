@@ -23,13 +23,13 @@ static int cpu_get_prop(int prop, int *val)
 {
 	switch (prop) {
 	case PROP_CPU_CPUINFO_MAX_FREQ:
-		return PLUGIN_GET(cpufreq_cpuinfo_max_freq)(val);
+		return PLUGIN_GET(cpufreq_cpuinfo_max_freq, val);
 	case PROP_CPU_CPUINFO_MIN_FREQ:
-		return PLUGIN_GET(cpufreq_cpuinfo_min_freq)(val);
+		return PLUGIN_GET(cpufreq_cpuinfo_min_freq, val);
 	case PROP_CPU_SCALING_MAX_FREQ:
-		return PLUGIN_GET(cpufreq_scaling_max_freq)(val);
+		return PLUGIN_GET(cpufreq_scaling_max_freq, val);
 	case PROP_CPU_SCALING_MIN_FREQ:
-		return PLUGIN_GET(cpufreq_scaling_min_freq)(val);
+		return PLUGIN_GET(cpufreq_scaling_min_freq, val);
 	}
 
 	return -1;
@@ -39,9 +39,9 @@ static int cpu_set_prop(int prop, int val)
 {
 	switch (prop) {
 	case PROP_CPU_SCALING_MAX_FREQ:
-		return PLUGIN_SET(cpufreq_scaling_max_freq)(val);
+		return PLUGIN_SET(cpufreq_scaling_max_freq, val);
 	case PROP_CPU_SCALING_MIN_FREQ:
-		return PLUGIN_SET(cpufreq_scaling_min_freq)(val);
+		return PLUGIN_SET(cpufreq_scaling_min_freq, val);
 	}
 
 	return -1;

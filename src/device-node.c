@@ -28,7 +28,7 @@
 
 static GList *dev_head;
 static void *dlopen_handle;
-const OEM_sys_devman_plugin_interface *plugin_intf;
+const OEM_sys_devman_plugin_interface *oem_intf;
 
 void add_device(const enum device_type *devtype)
 {
@@ -153,8 +153,8 @@ static void __CONSTRUCTOR__ module_init(void)
 		goto ERROR;
 	}
 
-	plugin_intf = OEM_sys_get_devman_plugin_interface();
-	if (!plugin_intf) {
+	oem_intf = OEM_sys_get_devman_plugin_interface();
+	if (!oem_intf) {
 		_E("get_devman_plugin_interface() failed");
 		goto ERROR;
 	}
@@ -162,8 +162,6 @@ static void __CONSTRUCTOR__ module_init(void)
 	return;
 
 ERROR:
-	plugin_intf = &default_plugin;
-
 	if (dlopen_handle)
 		dlclose(dlopen_handle);
 }

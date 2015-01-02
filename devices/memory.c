@@ -23,9 +23,9 @@ static int memory_get_prop(int prop, int *val)
 {
 	switch (prop) {
 	case PROP_MEMORY_NODE:
-		return PLUGIN_GET(memnotify_node)((char*)val);
+		return PLUGIN_GET(memnotify_node, (char*)val);
 	case PROP_MEMORY_VICTIM_TASK:
-		return PLUGIN_GET(memnotify_victim_task)(val);
+		return PLUGIN_GET(memnotify_victim_task, val);
 	}
 
 	return -1;
@@ -35,9 +35,9 @@ static int memory_set_prop(int prop, int val)
 {
 	switch (prop) {
 	case PROP_MEMORY_THRESHOLD_LV1:
-		return PLUGIN_SET(memnotify_threshold_lv1)(val);
+		return PLUGIN_SET(memnotify_threshold_lv1, val);
 	case PROP_MEMORY_THRESHOLD_LV2:
-		return PLUGIN_SET(memnotify_threshold_lv2)(val);
+		return PLUGIN_SET(memnotify_threshold_lv2, val);
 	}
 
 	return -1;
