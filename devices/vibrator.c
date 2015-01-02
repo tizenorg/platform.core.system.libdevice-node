@@ -23,9 +23,9 @@ static int vibrator_get_prop(int prop, int *val)
 {
 	switch (prop) {
 	case PROP_VIBRATOR_LEVEL:
-		return PLUGIN_GET(haptic_vibetones_level)(val);
+		return PLUGIN_GET(haptic_vibetones_level, val);
 	case PROP_VIBRATOR_LEVEL_MAX:
-		return PLUGIN_GET(haptic_vibetones_level_max)(val);
+		return PLUGIN_GET(haptic_vibetones_level_max, val);
 	}
 
 	return -1;
@@ -35,11 +35,11 @@ static int vibrator_set_prop(int prop, int val)
 {
 	switch (prop) {
 	case PROP_VIBRATOR_ENABLE:
-		return PLUGIN_SET(haptic_vibetones_enable)(val);
+		return PLUGIN_SET(haptic_vibetones_enable, val);
 	case PROP_VIBRATOR_LEVEL:
-		return PLUGIN_SET(haptic_vibetones_level)(val);
+		return PLUGIN_SET(haptic_vibetones_level, val);
 	case PROP_VIBRATOR_ONESHOT:
-		return PLUGIN_SET(haptic_vibetones_oneshot)(val);
+		return PLUGIN_SET(haptic_vibetones_oneshot, val);
 	}
 
 	return -1;

@@ -34,7 +34,7 @@ static int display_get_prop(int __prop, int *val)
 	int disp_cnt;
 	int r;
 
-	r = PLUGIN_GET(display_count)(&disp_cnt);
+	r = PLUGIN_GET(display_count, &disp_cnt);
 	if (r < 0) {
 		_E("Get display count failed");
 		return -1;
@@ -52,7 +52,7 @@ static int display_get_prop(int __prop, int *val)
 		*val = disp_cnt;
 		return 0;
 	case PROP_DISPLAY_MAX_BRIGHTNESS:
-		return PLUGIN_GET(backlight_max_brightness)(index, val);
+		return PLUGIN_GET(backlight_max_brightness, index, val);
 	case PROP_DISPLAY_BRIGHTNESS:
 		/* check power saving */
 		vconf_get_bool(VCONFKEY_SETAPPL_PWRSV_SYSMODE_STATUS, &ps_stat);
@@ -60,23 +60,23 @@ static int display_get_prop(int __prop, int *val)
 			vconf_get_bool(VCONFKEY_SETAPPL_PWRSV_CUSTMODE_DISPLAY, &ps_disp_stat);
 		if (ps_disp_stat != 1)
 			ps_disp_stat = 0;
-		return PLUGIN_GET(backlight_brightness)(index, val, ps_disp_stat);
+		return PLUGIN_GET(backlight_brightness, index, val, ps_disp_stat);
 	case PROP_DISPLAY_ACL_CONTROL:
-		return PLUGIN_GET(backlight_acl_control)(index, val);
+		return PLUGIN_GET(backlight_acl_control, index, val);
 	case PROP_DISPLAY_ONOFF:
-		return PLUGIN_GET(lcd_power)(index, val);
+		return PLUGIN_GET(lcd_power, index, val);
 	case PROP_DISPLAY_BRIGHTNESS_BY_LUX:
-		return PLUGIN_GET(backlight_brightness_by_lux)(lux, val);
+		return PLUGIN_GET(backlight_brightness_by_lux, lux, val);
 	case PROP_DISPLAY_IMAGE_ENHANCE_MODE:
-		return PLUGIN_GET(image_enhance_mode)(val);
+		return PLUGIN_GET(image_enhance_mode, val);
 	case PROP_DISPLAY_IMAGE_ENHANCE_SCENARIO:
-		return PLUGIN_GET(image_enhance_scenario)(val);
+		return PLUGIN_GET(image_enhance_scenario, val);
 	case PROP_DISPLAY_IMAGE_ENHANCE_TONE:
-		return PLUGIN_GET(image_enhance_tone)(val);
+		return PLUGIN_GET(image_enhance_tone, val);
 	case PROP_DISPLAY_IMAGE_ENHANCE_OUTDOOR:
-		return PLUGIN_GET(image_enhance_outdoor)(val);
+		return PLUGIN_GET(image_enhance_outdoor, val);
 	case PROP_DISPLAY_IMAGE_ENHANCE_INFO:
-		return PLUGIN_SYS(image_enhance_info)(val);
+		return PLUGIN_SYS(image_enhance_info, val);
 	}
 
 	return -1;
@@ -91,7 +91,7 @@ static int display_set_prop(int __prop, int val)
 	int disp_cnt;
 	int r;
 
-	r = PLUGIN_GET(display_count)(&disp_cnt);
+	r = PLUGIN_GET(display_count, &disp_cnt);
 	if (r < 0) {
 		_E("Get display count failed");
 		return -1;
@@ -110,21 +110,21 @@ static int display_set_prop(int __prop, int val)
 			vconf_get_bool(VCONFKEY_SETAPPL_PWRSV_CUSTMODE_DISPLAY, &ps_disp_stat);
 		if (ps_disp_stat != 1)
 			ps_disp_stat = 0;
-		return PLUGIN_SET(backlight_brightness)(index, val, ps_disp_stat);
+		return PLUGIN_SET(backlight_brightness, index, val, ps_disp_stat);
 	case PROP_DISPLAY_ACL_CONTROL:
-		return PLUGIN_SET(backlight_acl_control)(index, val);
+		return PLUGIN_SET(backlight_acl_control, index, val);
 	case PROP_DISPLAY_ONOFF:
-		return PLUGIN_SET(lcd_power)(index, val);
+		return PLUGIN_SET(lcd_power, index, val);
 	case PROP_DISPLAY_FRAME_RATE:
-		return PLUGIN_SET(display_frame_rate)(val);
+		return PLUGIN_SET(display_frame_rate, val);
 	case PROP_DISPLAY_IMAGE_ENHANCE_MODE:
-		return PLUGIN_SET(image_enhance_mode)(val);
+		return PLUGIN_SET(image_enhance_mode, val);
 	case PROP_DISPLAY_IMAGE_ENHANCE_SCENARIO:
-		return PLUGIN_SET(image_enhance_scenario)(val);
+		return PLUGIN_SET(image_enhance_scenario, val);
 	case PROP_DISPLAY_IMAGE_ENHANCE_TONE:
-		return PLUGIN_SET(image_enhance_tone)(val);
+		return PLUGIN_SET(image_enhance_tone, val);
 	case PROP_DISPLAY_IMAGE_ENHANCE_OUTDOOR:
-		return PLUGIN_SET(image_enhance_outdoor)(val);
+		return PLUGIN_SET(image_enhance_outdoor, val);
 	}
 
 	return -1;
