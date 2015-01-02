@@ -19,6 +19,7 @@
 #ifndef __DEVICE_INTERNAL_H__
 #define __DEVICE_INTERNAL_H__
 
+#include <errno.h>
 #include "device-node.h"
 
 #ifndef __CONSTRUCTOR__
@@ -44,12 +45,23 @@
 
 #define DEVMAN_PLUGIN_PATH  "/usr/lib/libslp_devman_plugin.so"
 
-#ifndef PLUGIN_DEFINE
-#define PLUGIN_DEFINE
-#define PLUGIN_SYS(node)	plugin_intf->OEM_sys_##node
-#define PLUGIN_GET(node)	plugin_intf->OEM_sys_get_##node
-#define PLUGIN_SET(node)	plugin_intf->OEM_sys_set_##node
-#endif
+#define DEF_SYS(node)		default_intf->OEM_sys_##node
+#define DEF_GET(node)		default_intf->OEM_sys_get_##node
+#define DEF_SET(node)		default_intf->OEM_sys_set_##node
+
+#define OEM_SYS(node)		oem_intf->OEM_sys_##node
+#define OEM_GET(node)		oem_intf->OEM_sys_get_##node
+#define OEM_SET(node)		oem_intf->OEM_sys_set_##node
+
+#define PLUGIN_SYS(node, ...) \
+	(oem_intf && OEM_SYS(node) ? OEM_SYS(node)(__VA_ARGS__) : \
+	 DEF_SYS(node) ? DEF_SYS(node)(__VA_ARGS__) : -ENOTSUP)
+#define PLUGIN_GET(node, ...) \
+	(oem_intf && OEM_GET(node) ? OEM_GET(node)(__VA_ARGS__) : \
+	 DEF_GET(node) ? DEF_GET(node)(__VA_ARGS__) : -ENOTSUP)
+#define PLUGIN_SET(node, ...) \
+	(oem_intf && OEM_SET(node) ? OEM_SET(node)(__VA_ARGS__) : \
+	 DEF_SET(node) ? DEF_SET(node)(__VA_ARGS__) : -ENOTSUP)
 
 struct device {
 	enum device_type type;
@@ -61,7 +73,8 @@ struct device {
 void add_device(const enum device_type *devtype);
 void remove_device(const enum device_type *devtype);
 
-extern const OEM_sys_devman_plugin_interface *plugin_intf;
+extern const OEM_sys_devman_plugin_interface *default_intf;
+extern const OEM_sys_devman_plugin_interface *oem_intf;
 extern const OEM_sys_devman_plugin_interface default_plugin;
 
 #endif		/* __DEVICE_INTERNAL_H__ */
