@@ -23,7 +23,7 @@ static int process_get_prop(int prop, int *val)
 {
 	switch (prop) {
 	case PROP_PROCESS_NODE:
-		return PLUGIN_GET(process_monitor_node)((char*)val);
+		return PLUGIN_GET(process_monitor_node, (char*)val);
 	}
 
 	return -1;
@@ -33,9 +33,9 @@ static int process_set_prop(int prop, int val)
 {
 	switch (prop) {
 	case PROP_PROCESS_MP_PNP:
-		return PLUGIN_SET(process_monitor_mp_pnp)(val);
+		return PLUGIN_SET(process_monitor_mp_pnp, val);
 	case PROP_PROCESS_MP_VIP:
-		return PLUGIN_SET(process_monitor_mp_vip)(val);
+		return PLUGIN_SET(process_monitor_mp_vip, val);
 	}
 
 	return -1;
