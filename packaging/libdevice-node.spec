@@ -36,10 +36,12 @@ make %{?jobs:-j%jobs}
 
 %files
 %{_libdir}/*.so.*
+%{_libdir}/hw/default/*.so
 %manifest %{name}.manifest
 %license LICENSE.APLv2
 
 %files devel
 %{_includedir}/device-node/*.h
+%{_includedir}/hw/*.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
