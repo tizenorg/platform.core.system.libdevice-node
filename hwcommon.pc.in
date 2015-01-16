@@ -1,0 +1,11 @@
+# Package Information for pkg-config
+prefix=@PREFIX@
+exec_prefix=@EXEC_PREFIX@
+libdir=@LIBDIR@
+includedir=/usr/include
+
+Name: Tizen HAL Interface library
+Description: Tizen HAL Interface library
+Version: @VERSION@
+Libs: -L${libdir} -lhwcommon
+Cflags: -I${includedir}
