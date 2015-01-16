@@ -41,5 +41,6 @@ make %{?jobs:-j%jobs}
 
 %files devel
 %{_includedir}/device-node/*.h
+%{_includedir}/hw/*.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
