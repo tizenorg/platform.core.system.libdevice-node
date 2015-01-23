@@ -23,13 +23,61 @@
 #include <linux/limits.h>
 
 #include <hw/backlight.h>
+#include "device-internal.h"
 #include "shared.h"
 
+#define BACKLIGHT_NODE	"/sys/class/leds/led1:heart"
+
+static int get_max_brightness(void)
+{
+	char buf[PATH_MAX];
+	int r, max;
+
+	snprintf(buf, sizeof(buf), "%s/max_brightness", BACKLIGHT_NODE);
+
+	r = sys_get_int(buf, &max);
+	if (r < 0) {
+		_E("fail to get max brightness : %s", strerror(r));
+		return r;
+	}
+
+	return max;
+}
+
+static int set_brightness(int brt)
+{
+	char buf[PATH_MAX];
+	static int max = -1;
+	int v, r;
+
+	if (brt < 0 || brt > 100)
+		return -EINVAL;
+
+	if (max < 0) {
+		max = get_max_brightness();
+		if (max < 0)
+			return -EPERM;
+	}
+
+	snprintf(buf, sizeof(buf), "%s/brightness", BACKLIGHT_NODE);
+
+	v = brt/100.f*max;
+	r = sys_set_int(buf, v);
+	if (r < 0)
+		return r;
+
+	return 0;
+}
 
 static int backlight_set_state(struct backlight_state_t *state)
 {
 	/* TODO: Need to implement */
-	return 0;
+	int v, r;
+
+	if (!state || state->brightness < 0)
+		return -EINVAL;
+
+	return set_brightness(state->brightness);
 }
 
 static int backlight_open(struct hw_info_t *info,
