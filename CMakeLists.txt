@@ -49,7 +49,7 @@ TARGET_LINK_LIBRARIES(hwcommon ${rpkgs_LDFLAGS})
 SET_TARGET_PROPERTIES(hwcommon PROPERTIES SOVERSION ${VERSION})
 INSTALL(TARGETS hwcommon DESTINATION ${LIB_INSTALL_DIR} COMPONENT RuntimeLibraries)
 
-ADD_LIBRARY(backlight SHARED hw/default/backlight.c)
+ADD_LIBRARY(backlight SHARED hw/default/backlight.c hw/default/shared.c)
 TARGET_LINK_LIBRARIES(backlight ${rpkgs_LDFLAGS})
 INSTALL(TARGETS backlight DESTINATION ${LIB_INSTALL_DIR}/hw/default/ COMPONENT RuntimeLibraries)
 
