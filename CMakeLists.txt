@@ -34,7 +34,7 @@ INCLUDE(devices/CMakeLists.txt)
 
 SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} -fvisibility=hidden")
 SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} -g")
-SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} -Werror -Wno-unused-variable -Wno-unused-function")
+SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} -Werror")
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${EXTRA_CFLAGS}")
 
 ADD_DEFINITIONS("-DLIBPATH=\"${LIB_INSTALL_DIR}\"")
