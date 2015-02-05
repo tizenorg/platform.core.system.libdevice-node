@@ -68,11 +68,18 @@ struct hw_common {
  */
 #define HARDWARE_INFO_SYM		TizenHwInfo
 
-/**
- * Name of the hardware info symbolic as a string
- */
-#define HARDWARE_INFO_SYM_AS_STR	"TizenHwInfo"
-
 int hw_get_info(const char *id, const struct hw_info **info);
+
+/**
+ * Structure define of hardware info module
+ * All hardware module should be use below define
+ * to make a specific structure for Tizen HAL.
+ * hw_get_info function will load a hw_info structure
+ * by using TizenHwInfo name at runtime.
+ * TizenHwInfo means Tizen Hardware Info.
+ */
+#define HARDWARE_MODULE_STRUCTURE	\
+	__attribute__ ((visibility("default"))) \
+	struct hw_info HARDWARE_INFO_SYM
 
 #endif

@@ -31,7 +31,14 @@
 #define EXPORT	__attribute__ ((visibility("default")))
 #endif
 
+#ifndef LIBPATH
+#error LIBPATH is not defined.
+#endif
+
 #define MODULE_PATH			LIBPATH"/hw"
+
+#define STRINGIZE2(s)	#s
+#define STRINGIZE(s)	STRINGIZE2(s)
 
 EXPORT
 int hw_get_info(const char *id, const struct hw_info **info)
@@ -40,7 +47,7 @@ int hw_get_info(const char *id, const struct hw_info **info)
 	void *handle;
 	struct hw_info *it;
 
-	if (!*info || !id)
+	if (!info || !id)
 		return -EINVAL;
 
 	/* Find matched module path */
@@ -58,7 +65,7 @@ int hw_get_info(const char *id, const struct hw_info **info)
 	}
 
 	/* Get the address of struct hw_common */
-	it = dlsym(handle, HARDWARE_INFO_SYM_AS_STR);
+	it = dlsym(handle, STRINGIZE(HARDWARE_INFO_SYM));
 	if (!it) {
 		_E("fail to find symbol : %s", dlerror());
 		goto error;
