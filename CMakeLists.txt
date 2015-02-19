@@ -29,7 +29,8 @@ SET(HEADERS
 SET(HW_HEADERS
 	hw/common.h
 	hw/backlight.h
-	hw/led.h)
+	hw/led.h
+	hw/cec.h)
 
 INCLUDE(devices/CMakeLists.txt)
 
