@@ -17,43 +17,38 @@
  */
 
 
-#ifndef __HW_BACKLIGHT_H__
-#define __HW_BACKLIGHT_H__
+#ifndef __HW_DISPLAY_H__
+#define __HW_DISPLAY_H__
 
 #include <hw/common.h>
 
 /**
  * The id of this device
  */
-#define BACKLIGHT_HARDWARE_DEVICE_ID	"backlight"
+#define DISPLAY_HARDWARE_DEVICE_ID	"display"
 
 /**
  * The version of this device
  */
-#define BACKLIGHT_HARDWARE_DEVICE_VERSION	MAKE_VERSION(1,0)
+#define DISPLAY_HARDWARE_DEVICE_VERSION	MAKE_VERSION(1,0)
 
-/**
- * The mode of backlight
- */
-enum backlight_mode {
-	BACKLIGHT_MANUAL,	/* Manual setting */
-	BACKLIGHT_SENSOR,	/* Worked by sensor */
+enum display_state {
+	DISPLAY_ON,       /* In use */
+	DISPLAY_STANDBY,  /* Blanked, low power */
+	DISPLAY_SUSPEND,  /* Blanked, lower power */
+	DISPLAY_OFF,      /* Shut off, awaiting activity */
 };
 
-struct backlight_device {
+struct display_device {
 	struct hw_common common;
 
-	/**
-	 * The brightness value is 0 to 100.
-	 */
+	/* The brightness value is 0 to 100. */
 	int (*get_brightness)(int *brightness);
 	int (*set_brightness)(int brightness);
 
-	/**
-	 * The backlight mode can be BACKLIGHT_MANUAL and BACKLIGHT_SENSOR.
-	 */
-	int (*get_mode)(enum backlight_mode *mode);
-	int (*set_mode)(enum backlight_mode mode);
+	/* Control display state */
+	int (*get_state)(enum display_state *state);
+	int (*set_state)(enum display_state state);
 };
 
 #endif
