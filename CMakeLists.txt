@@ -26,11 +26,6 @@ SET(HEADERS
 	include/device-node.h
 	include/devman_plugin_intf.h)
 
-SET(HW_HEADERS
-	hw/common.h
-	hw/backlight.h
-	hw/led.h)
-
 INCLUDE(devices/CMakeLists.txt)
 
 SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} -fvisibility=hidden")
@@ -61,9 +56,9 @@ FOREACH(hfile ${HEADERS})
 	INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${hfile} DESTINATION include/${PROJECT_NAME})
 ENDFOREACH(hfile)
 
-FOREACH(hfile ${HW_HEADERS})
-	INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${hfile} DESTINATION include/hw)
-ENDFOREACH(hfile)
+INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/hw/ DESTINATION include/hw
+		FILES_MATCHING
+		PATTERN "*.h")
 
 CONFIGURE_FILE(hwcommon.pc.in hwcommon.pc @ONLY)
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/hwcommon.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
