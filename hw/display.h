@@ -30,7 +30,7 @@
 /**
  * The version of this device
  */
-#define DISPLAY_HARDWARE_DEVICE_VERSION	MAKE_VERSION(1,0)
+#define DISPLAY_HARDWARE_DEVICE_VERSION	MAKE_VERSION(0,1)
 
 enum display_state {
 	DISPLAY_ON,       /* In use */
