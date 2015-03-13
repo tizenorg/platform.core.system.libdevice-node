@@ -39,6 +39,26 @@ enum display_state {
 	DISPLAY_OFF,      /* Shut off, awaiting activity */
 };
 
+enum display_image_quality {
+	DISPLAY_IMAGE_QUALITY_STANDARD,     /* No effect */
+	DISPLAY_IMAGE_QUALITY_NEGATIVE,     /* Total inversion */
+	DISPLAY_IMAGE_QUALITY_GRAYSCALE,    /* Shades of gray and no color */
+	DISPLAY_IMAGE_QUALITY_PICTURE,      /* Picture effect */
+	DISPLAY_IMAGE_QUALITY_VIDEO,        /* Video effect */
+	DISPLAY_IMAGE_QUALITY_MOVIE,        /* Movie effect */
+	DISPLAY_IMAGE_QUALITY_BROWSER,      /* Browser effect */
+	DISPLAY_IMAGE_QUALITY_WARM,         /* Warm effect */
+	DISPLAY_IMAGE_QUALITY_COLD,         /* Cold effect */
+	DISPLAY_IMAGE_QUALITY_NATURAL,      /* Natural effect */
+};
+
+enum display_panel_effect {
+	DISPLAY_PANEL_EFFECT_STANDARD,      /* No effect */
+	DISPLAY_PANEL_EFFECT_OUTDOOR,       /* Outdoor effect */
+	DISPLAY_PANEL_EFFECT_CONTENTS,      /* Contents adaptive brightness control */
+	DISPLAY_PANEL_EFFECT_LOWPOWER,      /* Low power effect */
+};
+
 struct display_device {
 	struct hw_common common;
 
@@ -49,6 +69,14 @@ struct display_device {
 	/* Control display state */
 	int (*get_state)(enum display_state *state);
 	int (*set_state)(enum display_state state);
+
+	/* Control image quality */
+	int (*get_image_quality)(enum display_image_quality *mode);
+	int (*set_image_quality)(enum display_image_quality mode);
+
+	/* Control panel effect mode */
+	int (*get_panel_effect)(enum display_panel_effect *mode);
+	int (*set_panel_effect)(enum display_panel_effect mode);
 };
 
 #endif
