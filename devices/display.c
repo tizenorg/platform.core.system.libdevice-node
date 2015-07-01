@@ -29,7 +29,6 @@ static int display_get_prop(int __prop, int *val)
 	int prop = PROPERTY_PROP(__prop);
 	int index = PROPERTY_INDEX(__prop);
 	int lux = index;
-	int ps_stat;
 	int ps_disp_stat = 0;
 	int disp_cnt;
 	int r;
@@ -54,12 +53,6 @@ static int display_get_prop(int __prop, int *val)
 	case PROP_DISPLAY_MAX_BRIGHTNESS:
 		return PLUGIN_GET(backlight_max_brightness, index, val);
 	case PROP_DISPLAY_BRIGHTNESS:
-		/* check power saving */
-		vconf_get_bool(VCONFKEY_SETAPPL_PWRSV_SYSMODE_STATUS, &ps_stat);
-		if (ps_stat == 1)
-			vconf_get_bool(VCONFKEY_SETAPPL_PWRSV_CUSTMODE_DISPLAY, &ps_disp_stat);
-		if (ps_disp_stat != 1)
-			ps_disp_stat = 0;
 		return PLUGIN_GET(backlight_brightness, index, val, ps_disp_stat);
 	case PROP_DISPLAY_ACL_CONTROL:
 		return PLUGIN_GET(backlight_acl_control, index, val);
@@ -86,7 +79,6 @@ static int display_set_prop(int __prop, int val)
 {
 	int prop = PROPERTY_PROP(__prop);
 	int index = PROPERTY_INDEX(__prop);
-	int ps_stat;
 	int ps_disp_stat = 0;
 	int disp_cnt;
 	int r;
@@ -104,12 +96,6 @@ static int display_set_prop(int __prop, int val)
 
 	switch (prop) {
 	case PROP_DISPLAY_BRIGHTNESS:
-		/* check power saving */
-		vconf_get_bool(VCONFKEY_SETAPPL_PWRSV_SYSMODE_STATUS, &ps_stat);
-		if (ps_stat == 1)
-			vconf_get_bool(VCONFKEY_SETAPPL_PWRSV_CUSTMODE_DISPLAY, &ps_disp_stat);
-		if (ps_disp_stat != 1)
-			ps_disp_stat = 0;
 		return PLUGIN_SET(backlight_brightness, index, val, ps_disp_stat);
 	case PROP_DISPLAY_ACL_CONTROL:
 		return PLUGIN_SET(backlight_acl_control, index, val);
