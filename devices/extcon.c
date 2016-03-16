@@ -39,7 +39,7 @@ static int parent(pid_t pid)
 			_I("%d stopped by signal %d", pid, WSTOPSIG(status));
 		}
 	} else {
-		_I("%d waitpid() failed : %s", pid, strerror(errno));
+		_I("%d waitpid() failed : %d", pid, errno);
 	}
 
 	return -EAGAIN;
