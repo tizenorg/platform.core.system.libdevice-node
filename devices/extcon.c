@@ -25,6 +25,7 @@
 
 static int parent(pid_t pid)
 {
+	char buf[256];
 	int status;
 
 	/* wait for child */
@@ -39,7 +40,7 @@ static int parent(pid_t pid)
 			_I("%d stopped by signal %d", pid, WSTOPSIG(status));
 		}
 	} else {
-		_I("%d waitpid() failed : %s", pid, strerror(errno));
+		_I("%d waitpid() failed : %s", pid, strerror_r(errno, buf, 256));
 	}
 
 	return -EAGAIN;
