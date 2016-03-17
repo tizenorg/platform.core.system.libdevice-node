@@ -36,7 +36,6 @@ struct ir_device {
 	struct hw_common common;
 
 	/* Control ir state */
-	int (*is_available)(bool *available);
 	int (*transmit)(int *frequency_pattern, int size);
 };
 
