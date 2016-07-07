@@ -62,7 +62,8 @@ enum display_panel_mode {
 struct display_device {
 	struct hw_common common;
 
-	/* The brightness value is 0 to 100. */
+	/* Control display brightness */
+	int (*get_max_brightness)(int *brightness);
 	int (*get_brightness)(int *brightness);
 	int (*set_brightness)(int brightness);
 
